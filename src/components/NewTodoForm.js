@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './NewTodoForm.css';
 
 class NewTodoForm extends Component {
 	constructor(props) {
@@ -35,18 +36,17 @@ class NewTodoForm extends Component {
 
 	render() {
 		return (
-			<div className='NewTodoForm'>
-				<h3 className='NewTodoForm-Header'>New Todo</h3>
-				<form className='NewTodoForm-Form' onSubmit={this.handleSubmit}>
-					<input
-						className='NewTodoForm-Input'
-						type='text'
-						value={this.state.item}
-						onChange={this.handleChange}
-					/>
-					<button type='submit'>ADD TODO</button>
-				</form>
-			</div>
+			<form className='NewTodoForm' onSubmit={this.handleSubmit}>
+				<input
+					type='text'
+					placeholder='New Task'
+					name='task'
+					id='task'
+					value={this.state.item}
+					onChange={this.handleChange}
+				/>
+				<button type='submit'>ADD TASK</button>
+			</form>
 		);
 	}
 }

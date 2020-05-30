@@ -16,6 +16,7 @@ class Todo extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.handleCompleted = this.handleCompleted.bind(this);
 	}
 
 	openEdit(evt) {
@@ -59,12 +60,17 @@ class Todo extends Component {
 		}
 	}
 
+	handleCompleted(evt) {
+		evt.preventDefault();
+		this.props.handleTaskCompleted(this.props.id);
+	}
+
 	render() {
 		let result;
 		if (this.state.isEditing) {
 			result = (
-				<div>
-					<form onSubmit={this.handleSubmit}>
+				<div className='Todo'>
+					<form className='Todo-EditForm' onSubmit={this.handleSubmit}>
 						<input
 							value={this.state.itemTemp}
 							onKeyDown={this.handleKeyDown}
@@ -77,10 +83,21 @@ class Todo extends Component {
 			);
 		} else {
 			result = (
-				<div>
-					<button onClick={this.openEdit}>Edit</button>
-					<button onClick={this.deleteItem}>X</button>
-					<li>{this.state.item}</li>
+				<div className='Todo'>
+					<li
+						onClick={this.handleCompleted}
+						className={this.props.completed ? 'Todo-Item completed' : 'Todo-Item'}
+					>
+						{this.state.item}
+					</li>
+					<div className='Todo-Actions'>
+						<button onClick={this.openEdit}>
+							<i className='fas fa-pen' />
+						</button>
+						<button onClick={this.deleteItem}>
+							<i className='fas fa-trash' />
+						</button>
+					</div>
 				</div>
 			);
 		}
