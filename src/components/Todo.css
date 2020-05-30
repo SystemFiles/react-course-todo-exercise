@@ -1,0 +1,19 @@
+.Todo {
+}
+
+.Todo-Edit {
+	cursor: pointer;
+	width: 10px;
+	height: 10px;
+	font-size: large;
+	color: #333;
+}
+
+.Todo-Delete {
+	cursor: pointer;
+	width: 10px;
+	height: 10px;
+	font-size: large;
+	color: #333;
+	margin-left: 30px;
+}
